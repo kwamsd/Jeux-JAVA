@@ -2,24 +2,19 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>Ma simulation Java en ligne</title>
-  <!-- CheerpJ Community 4.1 (CDN) -->
+  <title>Simulation Java en ligne</title>
   <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
 </head>
 <body>
   <h1>Simulation Java (CheerpJ)</h1>
-  <div id="cheerpj-ui"></div>
+  <div id="console" style="width:800px; height:600px; border:1px solid #333;"></div>
 
   <script>
     (async () => {
-      // 1) Initialise la JVM CheerpJ
       await cheerpjInit();
+      cheerpjSetCanvas("console", 800, 600);
 
-      // 2) Crée la zone d’affichage (Swing/AWT) si nécessaire
-      cheerpjCreateDisplay(800, 600, "cheerpj-ui");
-
-      // 3) Exécute ton JAR (chemin relatif à la racine)
-      await cheerpjRunJar("/monApp.jar");
+      await cheerpjRunJar("./monApp.jar");
     })();
   </script>
 </body>
