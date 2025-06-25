@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jeu Java Moto (WASM/JS)</title>
+  <style>
+    body,html {
+      margin:0; padding:0;
+      width:100%; height:100%;
+      background:#000; color:#0f0;
+      font-family:monospace;
+    }
+    #output {
+      white-space: pre-wrap;
+      padding:1rem;
+      height:100%; overflow:auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="output">Chargement…</div>
+
+  <!-- 1) Override console.log pour écrire aussi dans #output -->
+  <script>
+    (function(){
+      const out = document.getElementById("output");
+      if(!out) return;
+      const orig = console.log;
+      console.log = function(...args){
+        args.forEach(a=>{
+          out.textContent += String(a);
+        });
+        out.textContent += "\n";
+        orig.apply(console, args);
+      };
+      // vider le message "Chargement…"
+      out.textContent = "";
+    })();
+  </script>
+
+  <!-- 2) Charge le runtime TeaVM généré -->
+  <script src="app.js"></script>
+
+  <!-- 3) Si besoin, force l'exécution après chargement complet -->
+  <script>
+    if(window.teavm_run) {
+      // certains bootstrap JS exposent cette fonction
+      window.onload = () => window.teavm_run();
+    }
+  </script>
+</body>
+</html>

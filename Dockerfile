@@ -1,14 +1,18 @@
-# Use an official Java runtime
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jdk-slim
 
-# Installe ttyd — un petit serveur Web + Terminal
-RUN apt-get update && \
-    apt-get install -y ttyd && \
+RUN echo "deb http://deb.debian.org/debian bullseye-backports main" \
+    >> /etc/apt/sources.list.d/backports.list && \
+    apt-get update && \
+    apt-get install -y -t bullseye-backports ttyd && \
     rm -rf /var/lib/apt/lists/*
 
-# Copie tes classes compilées (ou compile-les ici même)
 WORKDIR /app
-COPY out/ ./out/
+COPY src/ src/
+RUN mkdir out && javac -d out src/entites/*.java
 
-# Commande par défaut : lance ttyd, qui exposera ta JVM dans le navigateur
-ENTRYPOINT ["ttyd", "-p", "8080", "java", "-cp", "out", "entites.Main"]
+# wrapper script
+COPY simulation.sh /usr/local/bin/simulation.sh
+RUN chmod +x /usr/local/bin/simulation.sh
+
+EXPOSE 8080
+ENTRYPOINT ["ttyd", "-p", "8080", "/usr/local/bin/simulation.sh"]
