@@ -1,0 +1,8 @@
+image: gitpod/workspace-full
+tasks:
+  - before: |
+      javac src/entites/*.java
+    command: java entites.Main
+ports:
+  - port: 8080
+    onOpen: open-preview
