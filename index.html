@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Ma simulation Java en ligne</title>
+  <!-- CheerpJ Community 4.1 (CDN) -->
+  <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
+</head>
+<body>
+  <h1>Simulation Java (CheerpJ)</h1>
+  <div id="cheerpj-ui"></div>
+
+  <script>
+    (async () => {
+      // 1) Initialise la JVM CheerpJ
+      await cheerpjInit();
+
+      // 2) Crée la zone d’affichage (Swing/AWT) si nécessaire
+      cheerpjCreateDisplay(800, 600, "cheerpj-ui");
+
+      // 3) Exécute ton JAR (chemin relatif à la racine)
+      await cheerpjRunJar("/monApp.jar");
+    })();
+  </script>
+</body>
+</html>

@@ -9,4 +9,7 @@ tasks:
       echo "Lancement de l'application"
       java -cp out entites.Main
 
-ports: []
+# expose le port 8080 pour ttyd
+ports:
+  - port: 8080
+    onOpen: open-preview
