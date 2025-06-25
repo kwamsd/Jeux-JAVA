@@ -3,9 +3,10 @@ image: gitpod/workspace-full
 tasks:
   - before: |
       echo "Compilation..."
-      javac src/entites/*.java
+      mkdir -p out
+      javac -d out src/entites/*.java
     init: |
       echo "Lancement de l'application"
-      java entites.Main
+      java -cp out entites.Main
 
 ports: []
