@@ -1,21 +1,26 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Simulation Java en ligne</title>
-  <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
+    <meta charset="utf-8" />
+    <title>Simulation Java en ligne</title>
+    <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
 </head>
+
 <body>
-  <h1>Simulation Java (CheerpJ)</h1>
-  <div id="console" style="width:800px; height:600px; border:1px solid #333;"></div>
+    <h1>Simulation Java (CheerpJ)</h1>
+    <div id="console" style="width:800px;height:600px;border:1px solid #333;"></div>
+    <script>
+        (async () => {
+            await cheerpjInit();
+            cheerpjCreateDisplay(800, 600);
+            // déplace le canvas généré dans ta div
+            document.getElementById('console')
+                .appendChild(document.querySelector('canvas'));
+            await cheerpjRunJar("./monApp.jar");
+        })();
+    </script>
 
-  <script>
-    (async () => {
-      await cheerpjInit();
-      cheerpjSetCanvas("console", 800, 600);
-
-      await cheerpjRunJar("./monApp.jar");
-    })();
-  </script>
 </body>
+
 </html>
