@@ -1,26 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <title>Simulation Java en ligne</title>
-
-  <!-- Runtime CheerpJ -->
-  <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeu POO Java – Terminal Web</title>
+  <style>
+    body {
+      background-color: #1a1a1d;
+      color: #fff;
+      font-family: 'Roboto Mono', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ff6600;
+    }
+    p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      color: #fff;
+      background-color: #ff6600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      background-color: #cc5200;
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
-  <h1>Simulation Java (CheerpJ)</h1>
 
-  <script>
-    (async () => {
-      try {
-        await cheerpjInit();                 // charge le runtime
-        cheerpjCreateDisplay(800, 600);      // crée l'affichage
-        await cheerpjRunJar("monApp.jar");   // lance ton .jar (doit être dans le même dossier)
-      } catch (e) {
-        console.error(e);
-        document.body.innerHTML += `<pre style="color:red;">${e}</pre>`;
-      }
-    })();
-  </script>
+  <h1>Jeu de Donjon Java</h1>
+  <p>Application console orientée objet réalisée en Java.<br>Sélectionnez un héros, affrontez des monstres et gérez vos combats dans un terminal interactif.</p>
+
+  <a href="http://localhost:8080" class="button" target="_blank">▶ Lancer le jeu</a>
+
+  <footer>
+    <p>Projet POO Java – Kwameh DHEGBO</p>
+  </footer>
+
 </body>
 </html>
