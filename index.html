@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="utf-8" />
-    <title>Simulation Java en ligne</title>
-    <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
+  <meta charset="utf-8" />
+  <title>Simulation Java en ligne</title>
+
+  <!-- Runtime CheerpJ -->
+  <script src="https://cjrtnc.leaningtech.com/4.1/loader.js"></script>
 </head>
-
 <body>
-    <h1>Simulation Java (CheerpJ)</h1>
-    <div id="console" style="width:800px;height:600px;border:1px solid #333;"></div>
-    <script>
-        (async () => {
-            await cheerpjInit();
-            cheerpjCreateDisplay(800, 600);
-            await cheerpjRunJar("monApp.jar");
-        })();
-    </script>
+  <h1>Simulation Java (CheerpJ)</h1>
 
+  <script>
+    (async () => {
+      try {
+        await cheerpjInit();                 // charge le runtime
+        cheerpjCreateDisplay(800, 600);      // crée l'affichage
+        await cheerpjRunJar("monApp.jar");   // lance ton .jar (doit être dans le même dossier)
+      } catch (e) {
+        console.error(e);
+        document.body.innerHTML += `<pre style="color:red;">${e}</pre>`;
+      }
+    })();
+  </script>
 </body>
-
 </html>
