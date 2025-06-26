@@ -14,9 +14,6 @@
         (async () => {
             await cheerpjInit();
             cheerpjCreateDisplay(800, 600);
-            // déplace le canvas généré dans ta div
-            document.getElementById('console')
-                .appendChild(document.querySelector('canvas'));
             await cheerpjRunJar("./monApp.jar");
         })();
     </script>
